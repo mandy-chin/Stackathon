@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div>
+    <div className="flex flex-row justify-end">
       <Link to="/home">
-        <p>Home</p>
+        <p className="text-yellow">Home</p>
       </Link>
       <Link to="/about">
-        <p>About</p>
+        <p className="text-yellow">About</p>
       </Link>
     </div>
   );
