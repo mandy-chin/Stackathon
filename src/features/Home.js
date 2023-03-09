@@ -2,19 +2,19 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="h-screen ">
-      <div className="flex flex-col h-full place-content-center">
+    <div>
+      <div className="flex flex-col place-content-center">
         <section className="flex flex-col">
           <section className="flex justify-center">
-            <h1 className="font-unica text-taupe text-5xl">
-              {" "}
+            <h1 className="font-unica text-taupe text-8xl mt-10 mb-10">
               What's cooking, good-looking ? ;)
             </h1>
           </section>
-          <img src="./logo.png" />
-          <section className="flex justify-center">
-            {/* <h1 className="font-synco text-taupe"> What's cooking, good-looking?</h1> */}
+
+          <section className="w-screen flex justify-center">
+            <img src="./logo.png" className="object-contain h-[500px]"/>
           </section>
+
           <section className="flex flex-row justify-center">
             <input
               type="text"
@@ -25,6 +25,7 @@ const Home = () => {
               Search
             </button>
           </section>
+
         </section>
       </div>
     </div>
