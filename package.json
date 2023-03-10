@@ -5,7 +5,10 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "webpack-dev-server .",
-    "build": "webpack ."
+    "build": "webpack",
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
+    "start:dev": "npm run build:dev & npm run start-server",
+    "build:dev": "npm run build -- --watch --mode=development"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +30,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "css-loader": "^6.7.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
     "postcss-loader": "^7.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
