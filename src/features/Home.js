@@ -1,6 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const searchForRecipe = (event) => {
+    event.preventDefault();
+    // event.target.query.value
+    navigate("/recipe", {state: event.target.query.value});
+  }
+  
   return (
     <div>
       <div className="flex flex-col place-content-center">
@@ -16,14 +25,17 @@ const Home = () => {
           </section>
 
           <section className="flex flex-row justify-center mt-[35px]">
+            <form onSubmit={searchForRecipe}>
             <input
               type="text"
               placeholder="discover your next culinary masterpiece"
+              name="query"
               className="bg-yellow rounded-md mr-5 font-montserrat w-96 text-center"
             ></input>
-            <button className="text-taupe font-unica text-3xl hover:underline decoration-dotted decoration-yellow">
+            <button className="text-taupe font-unica text-3xl hover:underline decoration-4 decoration-dotted decoration-yellow">
               Search
             </button>
+            </form>
           </section>
 
         </section>
