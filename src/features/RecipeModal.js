@@ -1,13 +1,18 @@
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const RecipeModal = (props) => {
-  const handleClick = () => {
+  const navigate = useNavigate();
+
+  const closeModal = () => {
     props.modal(!props.status);
   };
 
-  const clickMoreDetails = () => {};
+  const cookRecipe = () => {
+    navigate("/cooking", { state: props.info });
+  };
 
-  console.log(props.info.instructions);
+  //   console.log(props.info.instructions);
 
   let ingredients = props.info.ingredients
     ? props.info.ingredients.split("|")
@@ -26,7 +31,7 @@ const RecipeModal = (props) => {
     instructions = props.info.instructions.slice(0, index);
     instructions = instructions.split(".");
     // instructions = instructions.slice(0, instructions.length - 1);
-    console.log(instructions);
+    // console.log(instructions);
   }
 
   return (
@@ -37,19 +42,29 @@ const RecipeModal = (props) => {
           : "hidden"
       }
     >
-      <div className="bg-beige bg-orange-50/50 p-2 h-[40rem] w-[50rem] rounded-[40px]">
-
-        <section className="flex flex-col items-center h-[20rem] w-[50rem] m-[10px]">
-          <h1 className="text-taupe text-4xl font-unica m-[10px]">{props.info.title}</h1>
-          <h2 className="text-darkbrown font-montserrat mt-[10px] text-lg">{props.info.servings}</h2>
+      <div className="bg-beige bg-orange-50/50 p-2 h-[40rem] w-[50rem] rounded-[40px] flex flex-col justify-evenly items-center">
+          <h1 className="text-taupe text-4xl font-unica m-[10px] w-fit mt-5">
+            {props.info.title}
+          </h1>
+          <h2 className="text-darkbrown font-montserrat mt-[10px] text-lg w-fit">
+            {props.info.servings}
+          </h2>
 
           <div className="flex flex-row">
-            <div className="flex flex-col p-[20px] m-[10px]">
-              <p className="text-taupe text-2xl font-unica text-center">Ingredients</p>
+            <div className="flex flex-col p-[20px] m-[10px] mb-0 pb-[10px]">
+              <Link
+                to="/grocery"
+                className="text-taupe text-2xl font-unica text-center hover:underline decoration-4 decoration-dotted decoration-green"
+              >
+                <p className="">Ingredients</p>
+              </Link>
               <ul>
                 {ingredients
                   ? ingredients.map((ingredient, index) => (
-                      <li key={index} className="list-disc text-darkbrown font-montserrat">
+                      <li
+                        key={index}
+                        className="list-disc text-darkbrown font-montserrat"
+                      >
                         {ingredient}
                       </li>
                     ))
@@ -57,12 +72,17 @@ const RecipeModal = (props) => {
               </ul>
             </div>
 
-            <div className="flex flex-col p-[20px] mt-[10px] mb-[10px] mr-[20px] ml-[20px]">
-              <p className="text-taupe text-2xl font-unica text-center">Instructions</p>
+            <div className="flex flex-col p-[20px] mt-[10px] mr-[20px] ml-[20px] mb-0 pb-[10px]">
+              <p className="text-taupe text-2xl font-unica text-center">
+                Instructions
+              </p>
               <ul className="break-keep">
                 {instructions
                   ? instructions.map((step, index) => (
-                      <li key={index} className="list-decimal text-darkbrown font-montserrat">
+                      <li
+                        key={index}
+                        className="list-decimal text-darkbrown font-montserrat"
+                      >
                         {step}
                       </li>
                     ))
@@ -71,18 +91,25 @@ const RecipeModal = (props) => {
             </div>
           </div>
 
-          <p className="p-[20px] text-darkbrown font-montserrat">{notes}</p>
+          <p className="p-[10px] text-darkbrown font-montserrat">{notes}</p>
 
-          <div className="flex justify-center">
-            <button onClick={handleClick}>Close</button>
-            <button onClick={clickMoreDetails}>Let's get cooking!</button>
+          <div className="flex justify-center justify-evenly w-[50rem] mb-5">
+            <button
+              onClick={closeModal}
+              className="text-taupe font-unica text-2xl hover:underline decoration-4 decoration-dotted decoration-green"
+            >
+              Close
+            </button>
+            <button
+              onClick={cookRecipe}
+              className="text-taupe font-unica text-2xl hover:underline decoration-4 decoration-dotted decoration-green"
+            >
+              Let's get cooking!
+            </button>
           </div>
-        </section>
       </div>
     </div>
   );
 };
 
 export default RecipeModal;
-
-// ? "z-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow h-[40rem] w-[50rem] rounded-[40px] bg-black bg-opacity-30 backdrop-blur-sm"
