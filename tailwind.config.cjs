@@ -7,7 +7,9 @@ module.exports = {
                 mint: "#e9edc9",
                 yellow: "#fefae0",
                 beige: "#faedcd",
-                taupe: "#d4a373"
+                taupe: "#d4a373",
+                brown: "#9c6644",
+                darkbrown:"#7f5539" 
             },
             fontFamily: {
                 'montserrat': ['Montserrat', 'sans-serif'],

@@ -30,7 +30,7 @@ const Home = () => {
               type="text"
               placeholder="discover your next culinary masterpiece"
               name="query"
-              className="bg-yellow rounded-md mr-5 font-montserrat w-96 text-center"
+              className="bg-yellow rounded-md mr-5 font-montserrat w-96 text-center h-[35px]"
             ></input>
             <button className="text-taupe font-unica text-3xl hover:underline decoration-4 decoration-dotted decoration-yellow">
               Search
