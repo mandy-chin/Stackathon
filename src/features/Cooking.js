@@ -72,7 +72,7 @@ const Cooking = () => {
               Click Play :)
             </label>
           </div>
-          <audio controls src="./HitsDifferent.mp3" loop={true}></audio>
+          <audio controls src="./jazz.mp3" loop={true}></audio>
         </div>
       </div>
     </>
