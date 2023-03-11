@@ -12,6 +12,10 @@ const RecipeModal = (props) => {
     navigate("/cooking", { state: props.info });
   };
 
+  const createGroceryList = () => {
+    navigate("/grocery", {state: ingredients})
+  }
+
   //   console.log(props.info.instructions);
 
   let ingredients = props.info.ingredients
@@ -42,7 +46,8 @@ const RecipeModal = (props) => {
           : "hidden"
       }
     >
-      <div className="bg-beige bg-orange-50/50 p-2 h-[40rem] w-[50rem] rounded-[40px] flex flex-col justify-evenly items-center">
+      <div className="bg-beige bg-orange-50/80 p-2 h-[40rem] w-[50rem] rounded-[40px] overflow-y-auto overflow-x-hidden">
+        <div className="h-full flex flex-col items-center">
           <h1 className="text-taupe text-4xl font-unica m-[10px] w-fit mt-5">
             {props.info.title}
           </h1>
@@ -52,12 +57,10 @@ const RecipeModal = (props) => {
 
           <div className="flex flex-row">
             <div className="flex flex-col p-[20px] m-[10px] mb-0 pb-[10px]">
-              <Link
-                to="/grocery"
-                className="text-taupe text-2xl font-unica text-center hover:underline decoration-4 decoration-dotted decoration-green"
-              >
-                <p className="">Ingredients</p>
-              </Link>
+              <p className="text-taupe text-2xl font-unica text-center hover:underline decoration-4 decoration-dotted decoration-green"
+              onClick={createGroceryList}>
+                Ingredients
+              </p>
               <ul>
                 {ingredients
                   ? ingredients.map((ingredient, index) => (
@@ -107,6 +110,7 @@ const RecipeModal = (props) => {
               Let's get cooking!
             </button>
           </div>
+        </div>
       </div>
     </div>
   );

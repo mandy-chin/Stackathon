@@ -6,10 +6,11 @@ const Home = () => {
 
   const searchForRecipe = (event) => {
     event.preventDefault();
-    // event.target.query.value
-    navigate("/recipe", {state: event.target.query.value});
-  }
-  
+    if (event.target.query.value.length !== 0) {
+      navigate("/recipe", { state: event.target.query.value });
+    }
+  };
+
   return (
     <div>
       <div className="flex flex-col place-content-center">
@@ -21,23 +22,22 @@ const Home = () => {
           </section>
 
           <section className="w-screen flex justify-center">
-            <img src="./logo.png" className="object-contain h-[480px]"/>
+            <img src="./logo.png" className="object-contain h-[480px]" />
           </section>
 
-          <section className="flex flex-row justify-center mt-[35px]">
+          <section className="flex flex-row justify-center mt-[20px] mb-2">
             <form onSubmit={searchForRecipe}>
-            <input
-              type="text"
-              placeholder="discover your next culinary masterpiece"
-              name="query"
-              className="bg-yellow rounded-md mr-5 font-montserrat w-96 text-center h-[35px]"
-            ></input>
-            <button className="text-taupe font-unica text-3xl hover:underline decoration-4 decoration-dotted decoration-yellow mt-5">
-              Search
-            </button>
+              <input
+                type="text"
+                placeholder="discover your next culinary masterpiece"
+                name="query"
+                className="bg-yellow rounded-md mr-5 font-montserrat w-96 text-center h-[35px]"
+              ></input>
+              <button className="text-taupe font-unica text-3xl hover:underline decoration-4 decoration-dotted decoration-yellow mt-5">
+                Search
+              </button>
             </form>
           </section>
-
         </section>
       </div>
     </div>
